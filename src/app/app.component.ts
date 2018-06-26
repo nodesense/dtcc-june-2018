@@ -24,6 +24,9 @@ export class AppComponent implements OnInit {  // 4 TypeScript class, code
                         pincode: 600001
                     }
 
+
+    pageName: string = 'home'
+
     // before creating/initializing view
     constructor() {
         console.log("App comp created")

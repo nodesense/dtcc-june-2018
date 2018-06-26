@@ -1,7 +1,39 @@
-<h2>Home</h2>
+<!-- h2, p are host elements, they host directive -->
+<h2 appHighlight>Home</h2>
+
+<p>Likes {{likes}} </p>
+
+<p appHighlight *ngIf="likes % 2 == 0">
+   Dynamic Text 
+</p>
 
 <!-- data binding -->
 <!-- 1. {{expr}} interpolation -->
+
+<!-- pipe example -->
+
+<p> Price {{price | currency}} </p>
+<p> Price {{price | currency:'INR'}} </p>
+<p> Price {{price | currency:'EUR'}} </p>
+
+<p> Product Name {{productName | uppercase}} </p>
+<p> Product Name {{productName | lowercase}} </p>
+
+<p> Date {{today | date}}</p>
+
+
+<p> Date {{today | date:'fullDate' | uppercase}}</p>
+
+<p>Date {{today | date:'yyyy-dd-MM'}} </p> 
+
+<!-- custom pipe -->
+<p> Power 2^3 ==> {{2 | power:3}}</p>
+
+<p> Power (2^3)  ^2 ==> {{2 | power:3 | power:2}}</p>
+
+<p>Power Default (2) ==> {{2 | power}} </p>
+
+<p> Power {{likes}}^2 ==> {{likes | power: 2}} </p>
 
 <p>Price {{price}}</p>
 
@@ -11,11 +43,11 @@
 
 <!-- 2. [propertyName]="expr" property binding -->
 
-<input [value]="price" />
+<input [value]="price" appHighlight />
 
 <input [value]="price * 10" />
 
-<button [disabled]="likes % 2 == 0">
+<button [disabled]="likes % 2 == 0" appHighlight>
   My button
 </button>
 
