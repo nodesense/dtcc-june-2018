@@ -41,7 +41,7 @@ export class FooterComponent implements OnInit {
   contact() {
     //TODO: call parent component
     // publish event
-    this.contactEvent.emit(this.address)
+    this.contactEvent.emit(this.address.city)
   }
 
 }
