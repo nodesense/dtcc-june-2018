@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import {NgModule} from '@angular/core'
 
 import {BrowserModule} from '@angular/platform-browser';
@@ -9,10 +10,15 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 
+import {FormsModule} from '@angular/forms';
+
 @NgModule({
     // references to other modules
     imports: [
         BrowserModule,
+        FormsModule,
+
+        SharedModule
 
 
         // NgGridModule, 

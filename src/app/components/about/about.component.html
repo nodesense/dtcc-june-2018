@@ -1,5 +1,42 @@
-<p>
-  about works!
-</p>
+<h2>About</h2>
 
-<app-contact></app-contact>
+<!-- [()] two way binding -->
+
+<input name="name" [(ngModel)]="memberName" />
+
+<!-- non sugar-->
+
+<input name="name" [ngModel]="memberName"
+                   (ngModelChange)="memberName=$event"
+/>
+
+
+
+
+<button (click)="addMember()">
+  Add
+</button>
+
+<h4>Members</h4>
+
+<ul>
+  <li *ngFor="let name of members">
+     {{name}}
+  </li>
+</ul>
+
+
+<app-like [(likes)]="aboutLikes">
+
+</app-like>
+
+<!-- non sugar-->
+
+<app-like [likes]="aboutLikes"
+          (likesChange)="aboutLikes = $event">
+</app-like>
+
+
+<app-like [(likes)]="pageLikes">
+
+  </app-like>

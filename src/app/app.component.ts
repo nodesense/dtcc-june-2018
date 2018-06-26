@@ -1,3 +1,4 @@
+import { Address } from './shared/models/address';
 import {Component, OnInit} from '@angular/core'
 
 @Component({
@@ -16,7 +17,12 @@ import {Component, OnInit} from '@angular/core'
 })
 export class AppComponent implements OnInit {  // 4 TypeScript class, code
     // Model data
-    appTitle: string = "Product App 4"
+    appTitle: string = "Product App"
+    year = 2018
+    address:Address = { city: 'Chennai', 
+                        state: 'TN', 
+                        pincode: 600001
+                    }
 
     // before creating/initializing view
     constructor() {
@@ -27,4 +33,11 @@ export class AppComponent implements OnInit {  // 4 TypeScript class, code
     ngOnInit() {
         console.log("App comp ngInit")
     }
+
+    // handler
+    onContact(city: string) {
+        alert(city)
+    }
+
+
 }

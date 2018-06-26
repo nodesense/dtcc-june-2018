@@ -15,5 +15,17 @@
 
     <app-about></app-about>
 
-    <app-footer></app-footer>
+    <!-- 
+        subscribing for contactEvent
+        (contactEvent)="onContact($event)"
+    -->
+
+    <app-footer  [x-company]="appTitle" 
+                 [address]="address"
+                 [year]="year"
+                 
+                 (contactEvent)="onContact($event)"
+                 
+                 
+                 ></app-footer>
 </div>

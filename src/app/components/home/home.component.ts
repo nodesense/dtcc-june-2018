@@ -19,11 +19,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     //FIXME
-    setTimeout( ()=> {
-      console.trace()
-      console.log("timeout called")
-      this.likes += 100
-    }, 5000)
+    // setTimeout( ()=> {
+    //   console.trace()
+    //   console.log("timeout called")
+    //   this.likes += 100
+    // }, 5000)
   }
 
   divClick() {
