@@ -1,3 +1,4 @@
+import { Address } from './../../shared/models/address';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
+  // addres is undefined
+  address:Address
+
   constructor() { }
 
   ngOnInit() {
+    setTimeout( ()=> {
+      this.address = {city: 'Chennai', state:'TN'}
+    }, 3000)
+ 
   }
 
 }

@@ -19,6 +19,9 @@ export class LikeComponent implements OnInit {
   @Output() // Change is the keyword
   likesChange:EventEmitter<number> = new EventEmitter()
 
+
+  canHighlight: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

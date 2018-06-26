@@ -1,3 +1,21 @@
-<p>
-  header works!
-</p>
+<div>
+
+
+<ng-template #guestUserMessage>
+    <p> Welcome Guest!!!</p>
+</ng-template>
+  
+  <button *ngIf="!isLoggedIn" (click)="login()">
+    Login
+  </button>
+
+  <button *ngIf="isLoggedIn" (click)="logout()">
+    Logout
+  </button>
+
+  <!-- ng 4 onwards, else-->
+
+  <span *ngIf="isLoggedIn == true else guestUserMessage">Welcome User!!</span>
+
+
+</div>

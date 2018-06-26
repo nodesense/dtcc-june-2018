@@ -1,4 +1,7 @@
-<div>
+<div [ngClass]="{highlight: canHighlight, bordered: canHighlight}"
+    (mouseenter)="canHighlight = true"
+    (mouseleave)="canHighlight = false"
+>
   <span>Likes {{likes}}</span>
 
   <button (click)="up()">

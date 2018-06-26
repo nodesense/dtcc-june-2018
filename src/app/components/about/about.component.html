@@ -20,8 +20,8 @@
 <h4>Members</h4>
 
 <ul>
-  <li *ngFor="let name of members">
-     {{name}}
+  <li *ngFor="let name of members;let i=index; let o=odd; let e=even;">
+    {{i}} - {{name}} - isOdd {{o}}, isEven {{e}}
   </li>
 </ul>
 
