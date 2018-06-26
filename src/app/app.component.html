@@ -1,10 +1,15 @@
 <div>
     <h2>Welcome to {{appTitle}}</h2>
 
-    <!-- relationship: app.component is a parent component -->
+    <!-- component hierarchy: relationship: app.component is a parent component -->
     <!-- header, footer, home are children for app component -->
 
-    <app-header></app-header>
+
+    <!-- html, DOM: who is parent for header, div-->
+
+    <div>
+        <app-header></app-header>
+    </div>
 
     <app-home></app-home>
 

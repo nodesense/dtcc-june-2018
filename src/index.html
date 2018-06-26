@@ -15,6 +15,14 @@
 
   </app-root>
 
+  <button id="mybutton">Click me</button>
+  <script>
+    document.getElementById("mybutton")
+            .addEventListener('click', function() {
+              console.trace()
+              console.log("my button click")
+            })
+  </script>
   
 </body>
 </html>
