@@ -1,3 +1,29 @@
-<p>
-  product-home works!
-</p>
+<h2>Product Home</h2>
+
+<a routerLink="/products/list"
+   class="button"
+   routerLinkActive="success"
+   >
+    List
+  </a>
+
+
+  <a routerLink="/products/search"
+  class="button"
+  routerLinkActive="success"
+  >
+   Search
+ </a>
+
+  <a routerLink="/products/create"
+  class="button"
+  routerLinkActive="success"
+  >
+   Create
+ </a>
+
+ <div>
+   <!-- for hosting list, create, edit pages -->
+   <router-outlet>
+   </router-outlet>
+ </div>

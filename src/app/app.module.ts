@@ -1,3 +1,4 @@
+import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
 import {NgModule} from '@angular/core'
 
@@ -11,6 +12,9 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 import {FormsModule} from '@angular/forms';
+
+// NG 4.3 onwards
+import {HttpClientModule} from '@angular/common/http';
 
 // app.routing.ts
 import {RouterModule, Routes} from '@angular/router';
@@ -28,6 +32,14 @@ const routes:Routes = [
         path: 'contact',
         component: ContactComponent
     },
+ 
+    // lazy loading product
+    // {
+    //     path: 'products',
+    //     loadChildren: 'app/product/product.module#ProductModule'
+    // },
+
+
     {
         path: '**', //not found
         component: NotFoundComponent
@@ -40,10 +52,12 @@ const routes:Routes = [
     imports: [
         BrowserModule,
         FormsModule,
+        HttpClientModule,
 
         SharedModule,
 
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        ProductModule
 
 
         // NgGridModule, 
