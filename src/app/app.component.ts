@@ -1,3 +1,4 @@
+import { DataService } from './shared/services/data.service';
 import { Address } from './shared/models/address';
 import {Component, OnInit} from '@angular/core'
 
@@ -13,6 +14,10 @@ import {Component, OnInit} from '@angular/core'
     // scopped style, only for this component
     styleUrls: [
         'app.component.css'
+    ],
+
+    providers: [
+      //  DataService
     ]
 })
 export class AppComponent implements OnInit {  // 4 TypeScript class, code

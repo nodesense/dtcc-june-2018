@@ -6,6 +6,7 @@ import { PowerPipe } from './pipes/power.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
+import { DataService } from './services/data.service';
 
 @NgModule({
   imports: [
@@ -34,8 +35,10 @@ import { HighlightDirective } from './directives/highlight.directive';
       HighlightDirective
   ],
 
+  // Module level provider, 
+  // one instance per application, singleton
   providers: [
-    //DataService
+    DataService
   ]
 })
 export class SharedModule { }

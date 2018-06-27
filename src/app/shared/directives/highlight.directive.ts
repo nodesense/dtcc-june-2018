@@ -41,6 +41,8 @@ export class HighlightDirective implements OnInit, OnDestroy {
 
    this.color = this.color || 'lightgreen'
 
+
+ 
   }
 
   setColor(color: string) {

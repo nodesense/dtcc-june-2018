@@ -1,3 +1,4 @@
+import { DataService } from './../../shared/services/data.service';
 import { Address } from './../../shared/models/address';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +12,9 @@ export class ContactComponent implements OnInit {
   // addres is undefined
   address:Address
 
-  constructor() { }
+  // no component provider,
+  // takes from module provider, singleton
+  constructor(private dataService:DataService) { }
 
   ngOnInit() {
     setTimeout( ()=> {

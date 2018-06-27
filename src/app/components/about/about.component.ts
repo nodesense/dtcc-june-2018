@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { DataService } from './../../shared/services/data.service';
+import { Component, 
+          OnInit, 
+          Injector } from '@angular/core';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  styleUrls: ['./about.component.css'],
+
+  providers: [
+   DataService
+  ]
 })
 export class AboutComponent implements OnInit {
 
@@ -15,7 +22,14 @@ export class AboutComponent implements OnInit {
 
   members:string[] = ['Krish', 'Venkat']
 
-  constructor() { }
+  dataService: DataService;
+
+  constructor(private injector: Injector) { 
+    // create a service instance
+    this.dataService = injector.get(DataService)
+
+    let ds = injector.get(DataService)
+  }
 
   ngOnInit() {
   }

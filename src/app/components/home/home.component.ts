@@ -1,9 +1,14 @@
+import { DataService } from './../../shared/services/data.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  // service instance per component instance
+  providers: [
+    DataService
+  ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   likes: number = 1;
@@ -17,7 +22,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   // address // => any, bad practice
 
 
-  constructor() {
+  // Injecting Dataservice into home component
+  constructor(private dataService: DataService) {
      console.log("Home comp created")
    }
 
