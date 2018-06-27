@@ -1,4 +1,6 @@
+import { CartService } from './../../cart/services/cart.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,19 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false;
 
-  constructor() { }
+  amount: number;
+
+ 
+  constructor(private cartService: CartService) {
+       this.amount = this.cartService.amount
+   }
 
   ngOnInit() {
+    this.cartService.amount$
+        .subscribe ( amount => {
+           console.log("New amount ", amount);
+           this.amount = amount;
+        })
   }
 
   login() {

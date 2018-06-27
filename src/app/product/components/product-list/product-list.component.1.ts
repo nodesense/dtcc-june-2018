@@ -6,25 +6,38 @@ import { Product } from '../../models/product';
 
 
 import {Subscription} from 'rxjs/Subscription'
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit  {
-  products$: Observable<Product[]>; 
-  amount$: Observable<number>;
- 
+export class ProductListComponent implements OnInit, OnDestroy {
+  products:Product[] = []; 
+  amount:number;
+  productsSubscription: Subscription;
+  amountSubscription: Subscription;
+
+
   constructor(private productService: ProductService, 
               private cartService: CartService) {
 
-          this.amount$ = cartService.amount$;
+          this.amount = cartService.amount;
    }
 
   ngOnInit() {
-        this.products$ = this.productService.getProducts()
+
+    this.amountSubscription = this.cartService.amount$
+        .subscribe (amount => {
+           console.log("Product List sub ", amount);
+           this.amount = amount
+        })
+
+    this.productsSubscription = this.productService.getProducts()
+        .subscribe( products => {
+            this.products = products;
+            console.log("Got products ", this.products);
+        })
   }
 
   addToCart(product: Product) {
@@ -40,4 +53,10 @@ export class ProductListComponent implements OnInit  {
   deleteProduct(id: number) {
     
   }
+
+  ngOnDestroy() {
+    this.amountSubscription.unsubscribe()
+    this.productsSubscription.unsubscribe()
+  }
+
 }

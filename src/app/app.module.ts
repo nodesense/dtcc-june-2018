@@ -1,3 +1,4 @@
+import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
 import {NgModule} from '@angular/core'
@@ -57,7 +58,8 @@ const routes:Routes = [
         SharedModule,
 
         RouterModule.forRoot(routes),
-        ProductModule
+        ProductModule,
+        CartModule
 
 
         // NgGridModule, 

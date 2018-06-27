@@ -9,7 +9,7 @@ export class ProductService {
   constructor(private httpClient:HttpClient) { }
 
   getProducts():Observable<Product[]> {
-    return this.httpClient.get<Product[]> ("http://localhost:7070/api/products")
+    return this.httpClient.get<Product[]> ("http://localhost:7070/delayed/api/products")
   }
 
 }

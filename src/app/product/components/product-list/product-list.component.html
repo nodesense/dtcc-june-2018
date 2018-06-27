@@ -1,4 +1,7 @@
-<h2>Product List</h2>
+
+<!-- async pipe subscribe and unsubscribe -->
+
+<h2>Product List {{amount$ | async}} </h2>
 
 <table>
   <thead>
@@ -11,11 +14,15 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of products$ | async">
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td>{{product.year}}</td>
       <td> 
+          <button (click)="addToCart(product)">
+            +Cart
+          </button>
+
           <button (click)="deleteProduct(product.id)">
               Delete
           </button>
