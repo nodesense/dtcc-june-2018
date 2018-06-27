@@ -2,6 +2,7 @@ import { CartItem } from './../models/cart-item';
 import { Injectable } from '@angular/core';
 
 import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class CartService {
@@ -9,9 +10,13 @@ export class CartService {
   items: CartItem[] = [];
   amount: number = 0;
 
-  amount$:Subject<number> = new Subject();
+  // Subject shall call subscribe only on next method call
+  // amount$:Subject<number> = new Subject();
+  amount$:BehaviorSubject<number>; 
 
-  constructor() { }
+  constructor() { 
+    this.amount$ = new BehaviorSubject(this.amount)
+  }
 
   addItem(item: CartItem) {
      this.items.push(item)
