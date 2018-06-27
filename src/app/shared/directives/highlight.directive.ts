@@ -3,15 +3,31 @@ import { Directive, OnInit, OnDestroy,
          Renderer2,
          Input,
 
+         Output,
+         EventEmitter,
+
          HostListener
 
 } from '@angular/core';
 
+
 // must have [] in the selector
 @Directive({
-  selector: '[appHighlight]'
+  selector: '[appHighlight]',
+  exportAs: 'appHighlight', // good practice, match directive name
 })
 export class HighlightDirective implements OnInit, OnDestroy {
+
+  // < appHighlight="purple"
+
+  @Input("appHighlight")
+  color:string;
+
+  @Input()
+  canHighlight: string = "On"; // On or Off
+
+  @Output()
+  hostClick: EventEmitter<any> = new EventEmitter()
 
   constructor(private hostElement:ElementRef, 
               private renderer: Renderer2) {
@@ -20,8 +36,11 @@ export class HighlightDirective implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    console.log("highlight onInit")
+    console.log("highlight onInit", this.color)
    // this.setColor("lightgreen")
+
+   this.color = this.color || 'lightgreen'
+
   }
 
   setColor(color: string) {
@@ -32,13 +51,21 @@ export class HighlightDirective implements OnInit, OnDestroy {
 
   @HostListener('mouseenter')
   onEnter() {
-      this.setColor('lightgreen')
+     if (this.canHighlight == "On") {
+      this.setColor(this.color)
+     }
   }
 
   @HostListener('mouseleave')
   onLeave() {
     this.renderer.removeStyle(this.hostElement.nativeElement, "background")
   }
+
+  @HostListener("click")
+  onClick() {
+    this.hostClick.emit("data")
+  }
+
 
   ngOnDestroy() {
     console.log("highling on destroy ")

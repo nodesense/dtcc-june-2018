@@ -1,7 +1,15 @@
 <!-- h2, p are host elements, they host directive -->
-<h2 appHighlight>Home</h2>
+<!-- <h2 appHighlight color="lightblue">Home</h2> -->
 
-<p>Likes {{likes}} </p>
+<h2 appHighlight="lightblue" 
+     #highlight1="appHighlight" 
+     (hostClick)="highlight1.color='orange'"
+     >Home</h2>
+
+<p> Directive color {{highlight1.color}} </p>
+ 
+
+<p  appHighlight="purple" canHighlight="Off" >Likes {{likes}} </p>
 
 <p appHighlight *ngIf="likes % 2 == 0">
    Dynamic Text 
