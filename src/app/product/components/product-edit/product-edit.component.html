@@ -1,3 +1,31 @@
-<p>
-  product-edit works!
-</p>
+<h2>Product Edit</h2>
+
+<form>
+
+  Name
+  <input name="name"
+         [(ngModel)]="product.name"
+         type="text" 
+
+         />
+
+
+  Price
+  <input name="price"
+        [(ngModel)]="product.price"
+        type="number" 
+
+        />
+
+                
+
+  Year
+  <input name="year"
+         [(ngModel)]="product.year"
+         type="number" 
+
+         />
+
+
+
+</form>
