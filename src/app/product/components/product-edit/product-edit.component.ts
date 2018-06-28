@@ -42,6 +42,11 @@ export class ProductEditComponent implements OnInit, IEditable {
 
   ngOnInit() {
 
+    this.productForm.valueChanges
+        .subscribe ( values => {
+          console.log("VAlues ", values)
+        })
+
     this.productNameInput.nativeElement.focus();
 
     const id = this.route.snapshot.params['id']; 
