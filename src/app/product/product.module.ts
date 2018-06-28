@@ -14,12 +14,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // product.routing.ts
 import {RouterModule, Routes} from '@angular/router';
 import { SaveAlertGuard } from './guards/save-alert.guard';
+import { AuthGuard } from '../auth/guards/auth.guard';
+import { AdminGuard } from '../auth/guards/admin.guard';
 const routes:Routes = [
   {
-    //FIXME: Lazy loading
-    path: 'products',
-    //path: '', // lazy loading
+    // eager loading
+   // path: 'products',
+   
+    path: '', // lazy loading
     component: ProductHomeComponent,
+    canActivate: [AuthGuard],
 
     // nested navigation
     children: [
@@ -29,7 +33,8 @@ const routes:Routes = [
       },
       {
         path: 'create',
-        component: ProductEditComponent
+        component: ProductEditComponent,
+        canActivate: [AdminGuard]
       }, 
       {
         path: 'edit/:id',  // products/edit/12

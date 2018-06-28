@@ -28,14 +28,14 @@
      class="button"
      routerLinkActive="success"
   >   Contact </a>
-  
+<!--   
   <button *ngIf="!isLoggedIn" (click)="login()">
     Login
   </button>
 
   <button *ngIf="isLoggedIn" (click)="logout()">
     Logout
-  </button>
+  </button> -->
 
   <!-- ng 4 onwards, else-->
 
@@ -45,6 +45,10 @@
 <ng-template #guestUserMessage>
   <p> Welcome Guest!!!</p>
 </ng-template>
+
+<app-auth-menu>
+
+</app-auth-menu>
 
 
 </div>

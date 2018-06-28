@@ -1,5 +1,8 @@
+import { AuthModule } from './auth/auth.module';
 import { CartModule } from './cart/cart.module';
-import { ProductModule } from './product/product.module';
+
+//import { ProductModule } from './product/product.module';
+
 import { SharedModule } from './shared/shared.module';
 import {NgModule} from '@angular/core'
 
@@ -35,10 +38,10 @@ const routes:Routes = [
     },
  
     // lazy loading product
-    // {
-    //     path: 'products',
-    //     loadChildren: 'app/product/product.module#ProductModule'
-    // },
+    {
+        path: 'products',
+        loadChildren: 'app/product/product.module#ProductModule'
+    },
 
 
     {
@@ -58,8 +61,9 @@ const routes:Routes = [
         SharedModule,
 
         RouterModule.forRoot(routes),
-        ProductModule,
-        CartModule
+      //  ProductModule,
+        CartModule,
+        AuthModule,
 
 
         // NgGridModule, 
