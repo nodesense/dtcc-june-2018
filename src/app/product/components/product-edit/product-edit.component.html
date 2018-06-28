@@ -1,5 +1,10 @@
 <h2>Product Edit</h2>
 
+
+<p *ngIf="message">
+  Error {{message}}
+</p>
+
 <form  #productForm="ngForm"
        (ngSubmit)="saveProduct()"
   >

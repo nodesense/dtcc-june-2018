@@ -1,3 +1,4 @@
+import { CanEditGuard } from './guards/can-edit.guard';
 import { ProductService } from './services/product.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // product.routing.ts
 import {RouterModule, Routes} from '@angular/router';
+import { SaveAlertGuard } from './guards/save-alert.guard';
 const routes:Routes = [
   {
     //FIXME: Lazy loading
@@ -31,7 +33,9 @@ const routes:Routes = [
       }, 
       {
         path: 'edit/:id',  // products/edit/12
-        component: ProductEditComponent
+        component: ProductEditComponent, 
+        canActivate: [CanEditGuard],
+        canDeactivate: [SaveAlertGuard]
       },
       {
         path: 'search',
@@ -59,7 +63,10 @@ const routes:Routes = [
   ],
 
   providers: [
-    ProductService
+    ProductService,
+
+    CanEditGuard,
+    SaveAlertGuard
   ]
 })
 export class ProductModule { }
