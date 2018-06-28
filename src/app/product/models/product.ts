@@ -6,5 +6,7 @@ export class Product {
     brandId: number;
 
     //FIXME
-    // getName() 
+    getName()   {
+        return this.name
+    }
 }

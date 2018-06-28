@@ -14,8 +14,8 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit  {
-  products$: Observable<Product[]>; 
-  amount$: Observable<number>;
+   products$: Observable<Product[]>; 
+   amount$: Observable<number>;
  
   constructor(private productService: ProductService, 
               private cartService: CartService) {
