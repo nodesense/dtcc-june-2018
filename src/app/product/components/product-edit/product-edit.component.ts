@@ -16,6 +16,7 @@ import { Product } from '../../models/product';
 export class ProductEditComponent implements OnInit {
 
   product: Product = new Product(); //for create page
+
   brands$:Observable<Brand[]>;
 
   constructor(private route: ActivatedRoute,
@@ -33,9 +34,25 @@ export class ProductEditComponent implements OnInit {
           })
     }
 
-
     this.brands$ = this.productService.getBrands()
+  }
 
+  saveProduct() {
+
+    // if form is invalid, don't submit
+
+     this.productService.saveProduct(this.product)
+                        .subscribe ( savedProduct => {
+                          console.log("Product saved ", savedProduct)
+
+                          // Option 1: go to another page
+                          //this.router.navigateByUrl("/products/list")
+
+                          // Option 2: continue on same page
+                          this.product = savedProduct
+
+
+                        })
   }
 
 }

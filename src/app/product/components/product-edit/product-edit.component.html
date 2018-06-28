@@ -1,14 +1,42 @@
 <h2>Product Edit</h2>
 
-<form>
+<form  #productForm="ngForm"
+       (ngSubmit)="saveProduct()"
+  >
+
+<p *ngIf="productForm.invalid">
+  Invalid Form Data
+</p>
+
+<p *ngIf="productForm.dirty">
+    Form Data Changed
+</p>
 
   Name
   <input name="name"
          [(ngModel)]="product.name"
          type="text" 
 
+         required
+         minlength="3"
+
+         #productName="ngModel"
+
+         #productNameInput
+
          />
 
+  <p *ngIf="productName.invalid">
+    The name is invalid
+  </p>
+
+  <p *ngIf="productName.errors?.required">
+    Name is required field
+  </p>
+
+  <pre>
+    {{productName.errors | json}}
+  </pre>
 
   Price
   <input name="price"
@@ -16,9 +44,7 @@
         type="number" 
 
         />
-
-                
-
+ 
   Year
   <input name="year"
          [(ngModel)]="product.year"
@@ -26,6 +52,18 @@
 
          />
 
+  Brand
+  <select name="brandId"
+          [(ngModel)]="product.brandId"
+  >
+
+  <option *ngFor="let brand of brands$ | async"  [value]="brand.id"   >
+      {{brand.name}}
+  </option>
+
+  </select>
+
+  <button type="submit" [disabled]="productForm.pristine" >Save</button>
 
 
 </form>
